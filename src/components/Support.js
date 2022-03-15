@@ -1,6 +1,167 @@
-import React from "react";
+import React, { useState } from "react";
 import './Support.css';
+import { useForm } from '@formspree/react';
+import glade from '../assets/images/logo3.png';
+import glade_two from "../assets/images/logo.png";
+
 const Support = () => {
+    const [state, handleSubmit] = useForm("xknyzrbo");
+    const [error, setError] = useState({
+        firstname: false,
+        lastname: false,
+        phone: false,
+        address: false,
+        message: false
+    });
+    const [formData, setFormData] = useState({
+        firstname: '',
+        lastname: '',
+        phone: '',
+        address: '',
+        message: ''
+    });
+    const validateFxn = (e) => {
+        e.preventDefault();
+        let formIsValid = [];
+        Object.keys(formData).forEach((key) => {
+            switch (key) {
+                case 'firstname':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 3) {
+                        formIsValid.push(key);
+                        setError(prev => ({ ...prev, firstname: true }))
+                    }
+                    break;
+                case 'lastname':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 3) {
+                        formIsValid.push(key);
+                        setError(prev => ({ ...prev, lastname: true }))
+                    }
+                    break;
+                case 'phone':
+                    if (!formData[`${key}`] || (formData[`${key}`].length < 5 || formData[`${key}`].length > 11)) {
+                        formIsValid.push(key);
+                        setError(prev => ({ ...prev, phone: true }));
+                    }
+                    break;
+                case 'message':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 10) {
+                        formIsValid.push(key);
+                        setError(prev => ({ ...prev, message: true }));
+                    }
+                    break;
+                case 'address':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 10) {
+                        formIsValid.push(key);
+                        return setError(prev => ({ ...prev, address: true }));
+                    }
+                    break;
+                default: return null;
+            }
+        })
+        if (!formData.length) { handleSubmit(e) };
+    }
+    const setInputs = (data) => {
+        let name = data.target.name;
+        let value = data.target.value;
+
+        switch (name) {
+            case 'firstname':
+                setFormData({ ...formData, firstname: value });
+                setError({ ...error, firstname: false });
+                break;
+            case 'message':
+                setFormData({ ...formData, message: value });
+                setError({ ...error, message: false });
+                break;
+            case 'lastname':
+                setFormData({ ...formData, lastname: value });
+                setError({ ...error, lastname: false });
+                break;
+            case 'address':
+                setFormData({ ...formData, address: value });
+                setError({ ...error, address: false });
+                break;
+            case 'phone':
+                setFormData({ ...formData, phone: value });
+                setError({ ...error, phone: false });
+                break;
+            default: return null;
+        }
+    }
+
+    if (state.succeeded) {
+        return (
+            <div className="support-container">
+                <div className="section-one">
+                    <div className="circle-container">
+                        <div className="cirle"></div>
+                        <div className="cirle"></div>
+                        <div className="cirle"></div>
+                        <div className="cirle"></div>
+                    </div>
+                    <div className="circle-container">
+                        <div className="cirle"></div>
+                        <div className="cirle"></div>
+                        <div className="cirle"></div>
+                    </div>
+                    <div className="circle-container">
+                        <div className="cirle"></div>
+                        <div className="cirle"></div>
+                    </div>
+                    <div className="circle-container">
+                        <div className="cirle"></div>
+                    </div>
+                    <div className="float-support-image">
+                        <div className="item">
+                            <div>
+                                <img src={glade} alt="glade foundation" />
+                                <p>Supply your details and along with a reason for the relief fund request, We'll contact you.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="rotated-and-float">
+                        <div className="circle-container">
+                            <div className="cirle"></div>
+                            <div className="cirle"></div>
+                            <div className="cirle"></div>
+                            <div className="cirle"></div>
+                        </div>
+                        <div className="circle-container">
+                            <div className="cirle"></div>
+                            <div className="cirle"></div>
+                            <div className="cirle"></div>
+                        </div>
+                        <div className="circle-container">
+                            <div className="cirle"></div>
+                            <div className="cirle"></div>
+                        </div>
+                        <div className="circle-container">
+                            <div className="cirle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="section-two">
+                    <div>
+                        <div><img src={glade_two} className="glade-two" alt="glade" /></div>
+                        <h2>Request Processed, You'll be contacted!.</h2>
+                    </div>
+                    <form className="support-form">
+                        <div className="container-width">
+                            <button id='phone' type="button" placeholder="phone" onClick={() => {
+                                setFormData({
+                                    firstname: '',
+                                    lastname: '',
+                                    phone: '',
+                                    address: '',
+                                    message: ''
+                                }); handleSubmit({ ...state, succeeded: false })
+                            }}>Back to form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )
+    }
     return (
         <div className="support-container">
             <div className="section-one">
@@ -22,6 +183,15 @@ const Support = () => {
                 <div className="circle-container">
                     <div className="cirle"></div>
                 </div>
+                <div className="float-support-image">
+                    <div className="item">
+                        <div>
+                            <img src={glade} alt="glade foundation" />
+                            <p>Supply your details and along with a reason for the relief fund request, We'll contact you.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="rotated-and-float">
                     <div className="circle-container">
                         <div className="cirle"></div>
@@ -45,27 +215,32 @@ const Support = () => {
             </div>
             <div className="section-two">
                 <div>
-                    <h3>Request for COVID-19 relief fund</h3>
+                    <div><img src={glade_two} className="glade-two" alt="glade" /></div>
+                    <h2>Request for COVID-19 relief fund</h2>
                 </div>
-                <form className="support-form">
-                    <div  className="container-width">
-                        <label>Enter firstname</label><br/>
-                        <input className="support-input" id='firstname' placeholder="First Name" />
-                    </div>
-                    <div  className="container-width">
-                        <input className="support-input" id='lastname' placeholder="Last Name" />
-                    </div>
-                    <div  className="container-width">
-                        <input className="support-input" id='address' placeholder="Address" />
-                    </div>
-                    <div  className="container-width">
-                        <input className="support-input" id='phone' placeholder="phone" />
+                <form id="support" onSubmit={validateFxn} className="support-form">
+                    <div className="container-width">
+                        <input className="support-input" name="firstname" id='firstname' onChange={setInputs} placeholder="First Name" />
+                        {error.firstname ? <p className="error-field">Invalid first name</p> : null}
                     </div>
                     <div className="container-width">
-                        <textarea className="support-input" id='message' placeholder="Reason for fund"></textarea>
+                        <input className="support-input" id='lastname' name="lastname" onChange={setInputs} placeholder="Last Name" />
+                        {error.lastname ? <p className="error-field">Invalid last name</p> : null}
                     </div>
                     <div className="container-width">
-                        <button id='phone' type="button" placeholder="phone">Submit</button>
+                        <input className="support-input" id='address' name="address" placeholder="Home Address" onChange={setInputs} />
+                        {error.address ? <p className="error-field">Invalid Address</p> : null}
+                    </div>
+                    <div className="container-width">
+                        <input className="support-input" type='number' name="phone" id='phone' placeholder="phone" onChange={setInputs} />
+                        {error.lastname ? <p className="error-field">Invalid phone number</p> : null}
+                    </div>
+                    <div className="container-width">
+                        <textarea className="support-input" id='message' name="message" placeholder="Reason for fund" onChange={setInputs}></textarea>
+                        {error.message ? <p className="error-field">Invalid Message</p> : null}
+                    </div>
+                    <div className="container-width">
+                        <button id='phone' type="submit" disabled={state.submitting}>Submit</button>
                     </div>
                 </form>
             </div>
