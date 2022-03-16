@@ -1,0 +1,12 @@
+.partners-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .partners-section img {
+    width: 15rem;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 6rem;
+  }
