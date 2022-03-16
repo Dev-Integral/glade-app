@@ -1,5 +1,9 @@
 .header{
-    height: 35vh;
+    height: 30vh;
+    padding: 20px;
+}
+.header-logo{
+    width: 150px;
 }
 .banner-container{
     height: 65vh;

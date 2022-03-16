@@ -6,7 +6,7 @@ const Banner = () => {
         <div>
             <header className="header">
                 <div>
-                    <div><img className="glade-two" src={glade} alt="glade foundation" /></div>
+                    <div><img className="header-logo" src={glade} alt="glade foundation" /></div>
                 </div>
             </header>
             <div className="banner-container">
