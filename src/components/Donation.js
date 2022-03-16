@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import glade_two from '../assets/images/logo.png';
 import glade from '../assets/images/logo3.png';
+import './Donation.css';
 
 const Donation = () => {
     const [error, setError] = useState({})
@@ -50,6 +51,7 @@ const Donation = () => {
             amount: amount,
             country: "NG",
             currency: "NGN",
+            logo: 'https://res.cloudinary.com/iinintinteintegintegrintegral/image/upload/v1647461354/logo_fm0lof.png',
             onclose: function () {
                 console.log('glade modal closed')
             },
@@ -125,21 +127,21 @@ const Donation = () => {
                             {error.lastname ? <p className="error-field">Invalid last name</p> : null}
                         </div>
                         <div className="container-width">
-                            <input className="support-input" id='address' name="address" placeholder="Home Address" onChange={setInputs} />
-                            {error.address ? <p className="error-field">Invalid Address</p> : null}
+                            <input className="support-input" type="email" id='email' name="email" placeholder="Email Address" onChange={setInputs} />
+                            {error.email ? <p className="error-field">Invalid Email Address</p> : null}
                         </div>
                         <div className="container-width">
-                            <input className="support-input" type='number' name="phone" id='phone' placeholder="phone" onChange={setInputs} />
-                            {error.lastname ? <p className="error-field">Invalid phone number</p> : null}
+                            <input className="support-input" type='number' name="amount" id='amount' placeholder="Amount: Minimum of NGN100" onChange={setInputs} />
+                            {error.lastname ? <p className="error-field">Invalid Amount</p> : null}
                         </div>
                         <div className="container-width">
-                            <textarea className="support-input" id='message' name="message" placeholder="Reason for fund" onChange={setInputs}></textarea>
+                            <textarea className="support-input" id='description' name="description" placeholder="Add description" onChange={setInputs}></textarea>
                             {error.message ? <p className="error-field">Invalid Message</p> : null}
                         </div>
-                        <div className="container-width">
-                            <button id='phone' type="submit" onClick={initiatePayment}>Donate</button>
-                        </div>
                     </form>
+                    <div className="container-width donate-btn">
+                        <button id='phone' type="submit" onClick={initiatePayment}>Donate</button>
+                    </div>
                 </div>
             </div>
         </div>
