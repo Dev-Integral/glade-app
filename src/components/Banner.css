@@ -1,0 +1,27 @@
+.header{
+    height: 35vh;
+}
+.banner-container{
+    height: 65vh;
+    width: 100%;
+    background-image: url(../assets/images/covid\ 19.png);
+    background-size: cover;
+    background-position: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.banner-container .title, .banner-container .sub-title{
+    font-size: 45px;
+    color: #fff;
+    background: rgb(12, 44, 126, .50);
+    width: 65vw;
+    margin-left: 20px;
+    padding-left:15px;
+}
+.banner-container .sub-title{
+    margin-top: 0;
+    font-size: 30px;
+    width: 45vw;
+    font-weight: 300;
+}

@@ -1,3 +1,17 @@
-.donate-btn{
-    width: 30vw;
+.donate-btn {
+  display: flex;
+  width: 32vw;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+.donate-btn button {
+  padding: 10px;
+  background: #0c2c7e;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+
+  box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
 }

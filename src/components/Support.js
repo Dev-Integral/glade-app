@@ -58,7 +58,11 @@ const Support = () => {
                 default: return null;
             }
         })
-        if (!formData.length) { handleSubmit(e) };
+        if (formIsValid.length > 0){ 
+            return null 
+        } else{
+            handleSubmit(e) 
+        }
     }
     const setInputs = (data) => {
         let name = data.target.name;

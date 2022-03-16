@@ -41,24 +41,67 @@ const Donation = () => {
     }
 
     const initiatePayment = () => {
-        window.initPayment({
-            MID: "GP0000001",
-            email: email,
-            firstname: firstname,
-            lastname: lastname,
-            description: description,
-            title: "",
-            amount: amount,
-            country: "NG",
-            currency: "NGN",
-            logo: 'https://res.cloudinary.com/iinintinteintegintegrintegral/image/upload/v1647461354/logo_fm0lof.png',
-            onclose: function () {
-                console.log('glade modal closed')
-            },
-            callback: function (response) {
-                console.log(response);
+        let formData = {firstname, lastname, email, amount, description};
+        let formIsValid = [];
+
+        Object.keys(formData).forEach((key) => {
+            switch (key) {
+                case 'firstname':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 3) {
+                        setError(prev => ({ ...prev, firstname: true }));
+                        return formIsValid.push(key);
+                    }
+                    break;
+                case 'lastname':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 3) {
+                        setError(prev => ({ ...prev, lastname: true }))
+                        return formIsValid.push(key);
+                    }
+                    break;
+                case 'email':
+                    const emailFormat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    if (!formData[`${key}`] || !emailFormat.test(formData[`${key}`])) {
+                        setError(prev => ({ ...prev, email: true }));
+                        return formIsValid.push(key);
+                    }
+                    break;
+                case 'description':
+                    if (!formData[`${key}`] || formData[`${key}`].length < 5) {
+                        setError(prev => ({ ...prev, description: true }));
+                        return formIsValid.push(key);  
+                    }
+                    break;
+                case 'amount':
+                    if (!formData[`${key}`] || formData[`${key}`] < 100 ) {
+                        setError(prev => ({ ...prev, amount: true }));
+                        return formIsValid.push(key);
+                    }
+                    break;
+                default: return null;
             }
-        });
+        })
+        if(formIsValid?.length > 0){
+            return null;
+        }else{
+            window.initPayment({
+                MID: "GP0000001",
+                email: email,
+                firstname: firstname,
+                lastname: lastname,
+                description: description,
+                title: "",
+                amount: amount,
+                country: "NG",
+                currency: "NGN",
+                logo: 'https://res.cloudinary.com/iinintinteintegintegrintegral/image/upload/v1647461354/logo_fm0lof.png',
+                onclose: function () {
+                    console.log('glade modal closed')
+                },
+                callback: function (response) {
+                    console.log(response);
+                }
+            });
+        }
     }
     return (
         <div>
@@ -120,11 +163,11 @@ const Donation = () => {
                     <form id="support" className="support-form">
                         <div className="container-width">
                             <input className="support-input" name="firstname" id='firstname' onChange={setInputs} placeholder="First Name" />
-                            {error.firstname ? <p className="error-field">Invalid first name</p> : null}
+                            {error.firstname ? <p className="error-field">Invalid First Name</p> : null}
                         </div>
                         <div className="container-width">
                             <input className="support-input" id='lastname' name="lastname" onChange={setInputs} placeholder="Last Name" />
-                            {error.lastname ? <p className="error-field">Invalid last name</p> : null}
+                            {error.lastname ? <p className="error-field">Invalid Last Name</p> : null}
                         </div>
                         <div className="container-width">
                             <input className="support-input" type="email" id='email' name="email" placeholder="Email Address" onChange={setInputs} />
@@ -136,10 +179,10 @@ const Donation = () => {
                         </div>
                         <div className="container-width">
                             <textarea className="support-input" id='description' name="description" placeholder="Add description" onChange={setInputs}></textarea>
-                            {error.message ? <p className="error-field">Invalid Message</p> : null}
+                            {error.description ? <p className="error-field">Invalid Description</p> : null}
                         </div>
                     </form>
-                    <div className="container-width donate-btn">
+                    <div className="donate-btn">
                         <button id='phone' type="submit" onClick={initiatePayment}>Donate</button>
                     </div>
                 </div>

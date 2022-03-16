@@ -1,9 +1,19 @@
 import React from "react";
 import './Banner.css';
-
-const Banner = ()=> {
+import glade from '../assets/images/logo.png';
+const Banner = () => {
     return (
-        <div>Banner</div>
+        <div>
+            <header className="header">
+                <div>
+                    <div><img className="glade-two" src={glade} alt="glade foundation" /></div>
+                </div>
+            </header>
+            <div className="banner-container">
+                <h1 className="title">COVID-19 Solidarity Response Fund</h1>
+                <h2 className="sub-title">Help Glade Foundation fight COVID-19</h2>
+            </div>
+        </div>
     )
 }
 
