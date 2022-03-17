@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Support.css';
 import './SupportMobile.css';
 import { useForm } from '@formspree/react';
 import glade from '../../assets/images/logo3.png';
 import glade_two from "../../assets/images/logo.png";
 
-const Support = () => {
+const Support = ({ setToastrMsg, setStatus, setShowToastr }) => {
     const [state, handleSubmit] = useForm("xknyzrbo");
     const [error, setError] = useState({
         firstname: false,
@@ -21,6 +21,14 @@ const Support = () => {
         address: '',
         message: ''
     });
+    useEffect(() => {
+        if (state.succeeded) {
+            setToastrMsg('Form Submitted Successfully');
+            setStatus(true);
+            setShowToastr(true);
+            handleSubmit({ ...state, succeeded: false });
+        }
+    })
     const validateFxn = (e) => {
         e.preventDefault();
         let formIsValid = [];
@@ -59,10 +67,10 @@ const Support = () => {
                 default: return null;
             }
         })
-        if (formIsValid.length > 0){ 
-            return null 
-        } else{
-            handleSubmit(e) 
+        if (formIsValid.length > 0) {
+            return null
+        } else {
+            handleSubmit(e);
         }
     }
     const setInputs = (data) => {
@@ -92,6 +100,17 @@ const Support = () => {
                 break;
             default: return null;
         }
+    }
+    const successfulSubmission = () => {
+        console.log('here')
+        setFormData({
+            firstname: '',
+            lastname: '',
+            phone: '',
+            address: '',
+            message: ''
+        });
+        handleSubmit({ ...state, succeeded: false })
     }
 
     if (state.succeeded) {
@@ -152,15 +171,7 @@ const Support = () => {
                     </div>
                     <form className="support-form">
                         <div className="container-width">
-                            <button id='phone' type="button" placeholder="phone" onClick={() => {
-                                setFormData({
-                                    firstname: '',
-                                    lastname: '',
-                                    phone: '',
-                                    address: '',
-                                    message: ''
-                                }); handleSubmit({ ...state, succeeded: false })
-                            }}>Back to form</button>
+                            <button id='phone' type="button" placeholder="phone" onClick={successfulSubmission}>Back to form</button>
                         </div>
                     </form>
                 </div>

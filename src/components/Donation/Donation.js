@@ -3,7 +3,7 @@ import glade_two from '../../assets/images/logo.png';
 import glade from '../../assets/images/logo3.png';
 import './Donation.css';
 
-const Donation = () => {
+const Donation = ({ setToastrMsg, setStatus, setShowToastr }) => {
     const [error, setError] = useState({})
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
@@ -95,10 +95,12 @@ const Donation = () => {
                 currency: "NGN",
                 logo: 'https://res.cloudinary.com/iinintinteintegintegrintegral/image/upload/v1647461354/logo_fm0lof.png',
                 onclose: function () {
-                    console.log('glade modal closed')
+                    setToastrMsg('Payment Modal Closed');
+                    setStatus(false);
+                    setShowToastr(true);
                 },
                 callback: function (response) {
-                    console.log(response);
+                    console.log({response});
                 }
             });
         }

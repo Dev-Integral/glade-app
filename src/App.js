@@ -5,30 +5,36 @@ import WhatWeDo from './components/What we do/WhatWeDo';
 import Support from './components/Support/Support';
 import OurPartners from './components/Our Partners/OurPartners';
 import Footer from './components/Footer/Footer';
+import Modal from './components/Modal/Modal';
+import ToastrMessage from './components/Modal/ToastrMessage';
+
 import { useEffect, useRef, useState } from 'react';
 
 function App() {
   // Declarations
   const [goto, setGoto] = useState('');
+  const [showToastr, setShowToastr] = useState(false);
+  const [toastrMsg, setToastrMsg] = useState('');
+  const [status, setStatus] = useState(true);
   const donate = useRef();
   const whatWeDo = useRef();
   const partners = useRef();
   const support = useRef();
-  
+
   // Life Hooks
-  useEffect(()=>{
-    if (goto === 'donate'){
+  useEffect(() => {
+    if (goto === 'donate') {
       donate.current.scrollIntoView();
-    }else if(goto === 'support'){
+    } else if (goto === 'support') {
       support.current.scrollIntoView();
-    }else if(goto === 'what we do'){
+    } else if (goto === 'what we do') {
       whatWeDo.current.scrollIntoView();
-    }else if(goto === 'partners'){
+    } else if (goto === 'partners') {
       partners.current.scrollIntoView();
     }
     setGoto('');
   }, [goto]);
-  
+
   // Functions
   const emmittedEvent = (event) => {
     setGoto(event)
@@ -39,13 +45,13 @@ function App() {
         <Banner emitEvent={emmittedEvent} />
       </div>
       <div ref={donate}>
-        <Donation />
+        <Donation setShowToastr={setShowToastr} setStatus={setStatus} setToastrMsg={setToastrMsg} />
       </div>
       <div ref={whatWeDo}>
         <WhatWeDo />
       </div>
       <div ref={support}>
-        <Support />
+        <Support setShowToastr={setShowToastr} setStatus={setStatus} setToastrMsg={setToastrMsg} />
       </div>
       <div ref={partners}>
         <OurPartners />
@@ -53,6 +59,13 @@ function App() {
       <div>
         <Footer />
       </div>
+      <Modal open={showToastr} onClose={() => setShowToastr(false)}>
+        <ToastrMessage onClose={() => {
+          setShowToastr(false);
+        }}
+          toastrMsg={toastrMsg}
+          status={status} />
+      </Modal>
     </div>
   );
 }

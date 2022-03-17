@@ -1,0 +1,57 @@
+.ToastrMessage-container{
+    background-color: white;
+    display: flex;
+    max-width: 40%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    margin: 79px auto;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.16);
+    -webkit-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.16);
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
+@media only screen and (max-width:1178px) {
+    
+}
+
+@media only screen and (max-width:1078px) {
+    
+}
+
+@media only screen and (max-width:990px) {
+    .referral-copied-container{
+        width: calc(490px/1.5);
+    }   
+}
+
+@media only screen and (max-width: 767px) {
+
+}
+
+@media only screen and (max-width: 565px) {
+    .ToastrMessage-container{
+        background-color: white;
+        display: flex;
+        max-width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 10px;
+        margin: 5px auto;
+        font-size: 12px;
+    }
+
+    .icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    
+}
