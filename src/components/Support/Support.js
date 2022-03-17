@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Support.css';
 import './SupportMobile.css';
 import { useForm } from '@formspree/react';
 import glade from '../../assets/images/logo3.png';
 import glade_two from "../../assets/images/logo.png";
 
-const Support = ({ setToastrMsg, setStatus, setShowToastr }) => {
+const Support = () => {
     const [state, handleSubmit] = useForm("xknyzrbo");
     const [error, setError] = useState({
         firstname: false,
@@ -14,6 +14,7 @@ const Support = ({ setToastrMsg, setStatus, setShowToastr }) => {
         address: false,
         message: false
     });
+    
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -21,14 +22,7 @@ const Support = ({ setToastrMsg, setStatus, setShowToastr }) => {
         address: '',
         message: ''
     });
-    useEffect(() => {
-        if (state.succeeded) {
-            setToastrMsg('Form Submitted Successfully');
-            setStatus(true);
-            setShowToastr(true);
-            handleSubmit({ ...state, succeeded: false });
-        }
-    })
+    
     const validateFxn = (e) => {
         e.preventDefault();
         let formIsValid = [];

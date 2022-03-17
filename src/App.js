@@ -51,7 +51,7 @@ function App() {
         <WhatWeDo />
       </div>
       <div ref={support}>
-        <Support setShowToastr={setShowToastr} setStatus={setStatus} setToastrMsg={setToastrMsg} />
+        <Support />
       </div>
       <div ref={partners}>
         <OurPartners />
