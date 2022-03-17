@@ -1,9 +1,8 @@
 .donate-btn {
   display: flex;
-  width: 32vw;
+  width: 80vw;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
 }
 .donate-btn button {
   padding: 10px;

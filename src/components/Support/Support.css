@@ -94,11 +94,10 @@
   flex-direction: column;
 }
 .support-input {
-  width: 100%;
   padding: 10px;
-  border: 1px solid #404044;
+  width: 70%;
   outline: none;
-  box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  border: none;
 }
 .support-form {
   width: 30vw;
@@ -107,6 +106,8 @@
 .container-width {
   width: 100%;
   margin-bottom: 20px;
+  box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid #404044;
 }
 textarea {
   width: 101%;
