@@ -1,6 +1,7 @@
 import React from "react";
 import './Banner.css';
-import glade from '../assets/images/logo.png';
+import glade from '../../assets/images/logo.png';
+
 const Banner = ({emitEvent}) => {
     return (
         <div>

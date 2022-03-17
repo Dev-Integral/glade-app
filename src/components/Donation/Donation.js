@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import glade_two from '../assets/images/logo.png';
-import glade from '../assets/images/logo3.png';
+import glade_two from '../../assets/images/logo.png';
+import glade from '../../assets/images/logo3.png';
 import './Donation.css';
 
 const Donation = () => {

@@ -17,7 +17,7 @@
 .banner-container{
     height: 65vh;
     width: 100%;
-    background-image: url(../assets/images/covid\ 19.png);
+    background-image: url(../../assets/images/covid\ 19.png);
     background-size: cover;
     background-position: top;
     display: flex;

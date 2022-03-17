@@ -1,10 +1,10 @@
 import './App.css';
-import Banner from './components/Banner';
-import Donation from './components/Donation';
-import WhatWeDo from './components/WhatWeDo';
-import Support from './components/Support';
-import OurPartners from './components/OurPartners';
-import Footer from './components/Footer';
+import Banner from './components/Banner/Banner';
+import Donation from './components/Donation/Donation';
+import WhatWeDo from './components/What we do/WhatWeDo';
+import Support from './components/Support/Support';
+import OurPartners from './components/Our Partners/OurPartners';
+import Footer from './components/Footer/Footer';
 import { useEffect, useRef, useState } from 'react';
 
 function App() {

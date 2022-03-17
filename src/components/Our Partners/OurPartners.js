@@ -1,7 +1,7 @@
 import React from "react";
-import ancora from "../assets/images/ancora.png";
-import bhc from "../assets/images/BHC-logo.png";
-import glade from "../assets/images/glade.svg";
+import ancora from "../../assets/images/ancora.png";
+import bhc from "../../assets/images/BHC-logo.png";
+import glade from "../../assets/images/glade.svg";
 import './OurPartners.css';
 
 const OurPartners = () => {
