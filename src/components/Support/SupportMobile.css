@@ -1,0 +1,10 @@
+@media screen and (max-width: 768px) {
+  .support-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .float-support-image .item {
+      position: relative;
+      bottom: 90px;
+  }
+}
