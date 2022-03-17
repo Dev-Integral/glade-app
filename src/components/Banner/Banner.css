@@ -7,12 +7,14 @@
 }
 .nav-holder{
     display: flex;
+    align-items: baseline;
+    justify-content: baseline;
     gap: 20px;
     font-weight: 400;
     color: orange;
 }
 .nav-link { transition: all .2s ease-in-out; }
-.nav-link:hover { transform: scale(1.1); cursor: pointer; }
+.nav-link:hover { transform: scale(1.2); cursor: pointer; }
 
 .banner-container{
     height: 65vh;
