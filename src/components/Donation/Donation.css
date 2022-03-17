@@ -1,6 +1,6 @@
 .donate-btn {
   display: flex;
-  width: 80vw;
+  width: 30vw;
   justify-content: center;
   align-items: center;
 }
@@ -13,4 +13,8 @@
   border: none;
 
   box-shadow: 2px 2px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 768px) {
+  .donate-btn { width: 80vw; }
 }

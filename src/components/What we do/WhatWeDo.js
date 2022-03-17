@@ -1,8 +1,9 @@
 import React from "react";
+import './WhatWeDo.css';
 
 const WhatWeDo = () => {
     return (
-        <div>
+        <div className="whatWeDo-container">
             <h1 className="align-center">What We Do</h1>
             <p className="justify">
                 The world is facing an unprecedented challenge with communities and economies everywhere

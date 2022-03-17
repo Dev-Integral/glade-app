@@ -1,13 +1,25 @@
 .partners-section{
     display: flex;
+    gap: 30px;
+    /* margin-top: 10px; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
+    background: #f3f3f3;
   }
   .partners-section img {
     width: 15rem;
-    text-align: center;
     vertical-align: middle;
-    margin-right: 6rem;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px){
+    .partners-section img{
+      width: 9rem;
+    }
+    .partners-section div{
+      display: flex;
+    }
   }
