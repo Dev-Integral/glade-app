@@ -58,6 +58,7 @@
   font-size: 12px;
   color: tomato;
   padding-left: 10px;
+  margin: 0;
 }
 .glade-two {
   display: flex;
